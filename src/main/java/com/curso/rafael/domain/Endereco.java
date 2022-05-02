@@ -1,6 +1,10 @@
 package com.curso.rafael.domain;
 
-public class Endereco {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Endereco implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String longradouro;
@@ -11,12 +15,14 @@ public class Endereco {
 	
 	private Cliente cliente;
 	
+	private Cidade cidade;
+	
 	public Endereco() {
 		
 	}
 
 	public Endereco(Integer id, String longradouro, String numero, String complemento, String bairro, String cep,
-			Cliente cliente) {
+			Cliente cliente, Cidade cidade) {
 		super();
 		this.id = id;
 		this.longradouro = longradouro;
@@ -25,6 +31,7 @@ public class Endereco {
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cliente = cliente;
+		this.cidade = cidade;
 	}
 
 	public Integer getId() {
@@ -82,6 +89,33 @@ public class Endereco {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Endereco other = (Endereco) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 	
 	
 
