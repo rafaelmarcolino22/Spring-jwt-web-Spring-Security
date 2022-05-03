@@ -7,28 +7,24 @@ import com.curso.rafael.domain.enums.EstadoPagamento;
 @Entity
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
-	
-	private Integer numerosDeParcelas;
 
+	private Integer numeroDeParcelas;
+	
 	public PagamentoComCartao() {
-		
 	}
 
-	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numerosDeParcelas ) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
-		this.numerosDeParcelas = numerosDeParcelas;
-		
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
-	public Integer getNumerosDeParcelas() {
-		return numerosDeParcelas;
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
 	}
 
-	public void setNumerosDeParcelas(Integer numerosDeParcelas) {
-		this.numerosDeParcelas = numerosDeParcelas;
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
-	
-	
 	
 	
 	

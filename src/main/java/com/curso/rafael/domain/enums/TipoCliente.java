@@ -2,7 +2,7 @@ package com.curso.rafael.domain.enums;
 
 public enum TipoCliente {
 	
-	PESSOALFISSICA(1, "Pessoa Fisica"),
+	PESSOALFISICA(1, "Pessoa Fisica"),
 	PESSOAJURIDICA(2, "Pessoa Juridica");
 	
 	private  int cod;
