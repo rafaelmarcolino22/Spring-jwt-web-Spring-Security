@@ -3,10 +3,12 @@ package com.curso.rafael.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.curso.rafael.domain.Categoria;
 import com.curso.rafael.repositories.CategoriaRepository;
+import com.curso.rafael.service.exception.DataIntegrityException;
 import com.curso.rafael.service.exception.ObjectNotFoundException;
 
 @Service
@@ -30,8 +32,17 @@ public class CategoriaService {
 	
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
-		return respo.save(obj);
+		return respo.save(obj); 
 	}
 	
+	public void delete(Integer id) {
+		find(id);
+		try {
+			respo.deleteById(id);
+		}
+		catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Nao e possivel excluir uma categoria que possui produtos");
+		}
+	}
 	
 }
