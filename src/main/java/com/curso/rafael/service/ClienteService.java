@@ -18,50 +18,47 @@ import com.curso.rafael.service.exception.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-
+	
 	@Autowired
-	public ClienteRepository respo;
-
+	private ClienteRepository repo;
+	
 	public Cliente find(Integer id) {
-
-		Optional<Cliente> obj = respo.findById(id);
+		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
 	}
-
+	
 	public Cliente update(Cliente obj) {
 		Cliente newObj = find(obj.getId());
 		updateData(newObj, obj);
-		return respo.save(obj);
+		return repo.save(newObj);
 	}
 
 	public void delete(Integer id) {
 		find(id);
 		try {
-			respo.deleteById(id);
-		} catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Nao e possivel excluir uma categoria que possui produtos");
+			repo.deleteById(id);
+		}
+		catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir porque há entidades relacionadas");
 		}
 	}
-
+	
 	public List<Cliente> findAll() {
-
-		return respo.findAll();
+		return repo.findAll();
 	}
-
+	
 	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		return respo.findAll(pageRequest);
+		return repo.findAll(pageRequest);
 	}
-
+	
 	public Cliente fromDTO(ClienteDTO objDto) {
-
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
 	}
 	
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
 	}
 }
