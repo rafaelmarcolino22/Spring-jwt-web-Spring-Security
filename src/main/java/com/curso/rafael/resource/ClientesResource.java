@@ -1,5 +1,6 @@
 package com.curso.rafael.resource;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.curso.rafael.domain.Categoria;
 import com.curso.rafael.domain.Cliente;
+import com.curso.rafael.dto.CategoriaDTO;
 import com.curso.rafael.dto.ClienteDTO;
+import com.curso.rafael.dto.ClienteNewDTO;
 import com.curso.rafael.service.ClienteService;
 
 
@@ -65,4 +70,15 @@ public class ClientesResource {
 		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}	
+	
+	
+
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO  objDTO) {
+		Cliente obj = service.fromDTO(objDTO);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+
 }
