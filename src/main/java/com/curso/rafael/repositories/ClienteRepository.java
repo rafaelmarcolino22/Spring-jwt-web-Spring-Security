@@ -11,6 +11,6 @@ import com.curso.rafael.domain.Cliente;
 public interface ClienteRepository  extends JpaRepository<Cliente, Integer> {
 	
 	@Transactional(readOnly=true)
-	Cliente finByEmail(String email);
+	Cliente findByEmail(String email);
 
 }
