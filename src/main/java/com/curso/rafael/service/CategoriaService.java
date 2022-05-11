@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.curso.rafael.domain.Categoria;
+import com.curso.rafael.domain.Cliente;
 import com.curso.rafael.dto.CategoriaDTO;
 import com.curso.rafael.repositories.CategoriaRepository;
 import com.curso.rafael.service.exception.DataIntegrityException;
@@ -36,8 +37,9 @@ public class CategoriaService {
 	}
 	
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return respo.save(obj); 
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return respo.save(newObj);
 	}
 	
 	public void delete(Integer id) {
@@ -64,6 +66,11 @@ public class CategoriaService {
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		
 		return new Categoria(objDto.getId(), objDto.getNome());
+	}
+	
+
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 	
 }
