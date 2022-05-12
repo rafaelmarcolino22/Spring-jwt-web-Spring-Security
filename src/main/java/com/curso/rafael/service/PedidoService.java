@@ -13,14 +13,11 @@ import com.curso.rafael.service.exception.ObjectNotFoundException;
 public class PedidoService {
 
 	@Autowired
-	public PedidoRepository respo;
+	private PedidoRepository repo;
 
-	public Pedido find(Integer id) {
-
-		Optional<Pedido> obj = respo.findById(id);
+	public Pedido buscar(Integer id) {
+		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
-
 	}
 }
