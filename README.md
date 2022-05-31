@@ -8,6 +8,17 @@ git remote set-url origin https://github.com/rafaelmarcolino22/backend-Spring-cr
 $ git push -u origin main
 
 
+## Validation
+
+
+import javax.validation.constraints.NotEmpty;</br>
+
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
 
 
 
