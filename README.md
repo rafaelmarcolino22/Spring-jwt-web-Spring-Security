@@ -21,7 +21,7 @@ import javax.validation.constraints.NotEmpty;</br>
 		</dependency>
 
 
-## Paginatio URL
+## Pagination URL
 ````
 http://localhost:8080/categorias/page?linesPerPage=3&page=0
 
