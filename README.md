@@ -33,7 +33,7 @@ import javax.validation.constraints.NotEmpty;</br>
 http://localhost:8080/categorias/page?linesPerPage=3&page=0
 
 ````
-** Create Validaion CPF CNPJ
+### Create Validaion CPF CNPJ
 
 ````
 
