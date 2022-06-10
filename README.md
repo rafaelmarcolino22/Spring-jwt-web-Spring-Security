@@ -140,3 +140,25 @@ public class BR {
 }
 ````
 
+### Cliente insert
+
+````
+
+{
+    "nome": "sergio",
+    "email": "sergio@gmail.com",
+    "cpf": "255587888",
+    "tipo": 1,
+    "telefone1": "478599885",
+    "telefone2": "366988858",
+    "logadouro": "rua 8",
+    "nuero": "45",
+    "complemento": "apt 45",
+    "cep": "588878",
+    "cidadeId": 2
+}
+
+
+
+````
+
