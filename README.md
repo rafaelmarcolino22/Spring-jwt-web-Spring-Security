@@ -1,6 +1,21 @@
 ## Spring-jwt-web-Spring-Security
 
 
+Maven JSON Web 
+link
+https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+our
+https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+
+````
+<dependency>
+	<groupId>io.jsonwebtoken</groupId>
+	<artifactId>jjwt</artifactId>
+	<version>0.7.0</version>
+</dependency>
+
+````
+
 Iniciando </br>
 git clone https://github.com/rafaelmarcolino22/Api_spring.git </br>
 cd Api_spring </br>
